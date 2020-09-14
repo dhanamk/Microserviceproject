@@ -1,0 +1,19 @@
+server:
+  port: 3333
+spring:
+  application:
+    name: API-GATEWAY
+    
+zuul:
+  prefix: /stock
+  routes:
+    prices:
+      path: /prices/**
+      serviceId: STOCKPRICE-SERVICE
+    calc:
+      path: /calc/**
+      serviceId: CALCULATION-SERVICE
+
+
+#EX: below url for route CALCULATION-SERVICE Service in UI Application 
+# http://localhost:3333/stock/calc/calculate/{companyName}/{qty}
